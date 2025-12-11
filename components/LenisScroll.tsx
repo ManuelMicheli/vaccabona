@@ -16,7 +16,6 @@ export default function LenisScroll({ children }: LenisScrollProps) {
       lerp: 0.08, // heavy / luxury inertia
       wheelMultiplier: 1.2,
       smoothWheel: true,
-      smoothTouch: false,
     });
 
     const raf = (time: number) => {

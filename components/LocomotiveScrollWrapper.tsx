@@ -13,10 +13,10 @@ export default function LocomotiveScrollWrapper({
   children,
 }: LocomotiveScrollWrapperProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const locoRef = useRef<import("locomotive-scroll").default | null>(null);
+  const locoRef = useRef<any | null>(null);
 
   useLayoutEffect(() => {
-    let locomotive: import("locomotive-scroll").default | null = null;
+    let locomotive: any | null = null;
     let containerEl: HTMLDivElement | null = null;
     let mounted = true;
     let cleanupRefresh: (() => void) | undefined;
@@ -38,7 +38,7 @@ export default function LocomotiveScrollWrapper({
         lerp: 0.035, // heavy drag
         multiplier: 0.6, // slower movement
         tablet: { smooth: true, breakpoint: 0 },
-        smartphone: { smooth: true, lerp: 0.08, multiplier: 0.8 },
+        smartphone: { smooth: true },
       });
       locoRef.current = locomotive;
 
@@ -68,7 +68,11 @@ export default function LocomotiveScrollWrapper({
       anchorLinks = Array.from(
         document.querySelectorAll('a[href^="#"], a[href^="/#"]'),
       ) as HTMLAnchorElement[];
-      anchorLinks.forEach((link) => link.addEventListener("click", handleAnchorClick));
+      if (handleAnchorClick) {
+        anchorLinks.forEach((link) =>
+          link.addEventListener("click", handleAnchorClick as EventListener),
+        );
+      }
 
       ScrollTrigger.scrollerProxy(containerEl, {
         scrollTop(value) {

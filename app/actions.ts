@@ -1,6 +1,6 @@
 "use server";
 
-export async function submitBooking(formData: FormData) {
+export async function submitBooking(formData: FormData): Promise<void> {
   const payload = {
     name: formData.get("name")?.toString() ?? "",
     date: formData.get("date")?.toString() ?? "",
@@ -10,7 +10,5 @@ export async function submitBooking(formData: FormData) {
   };
 
   console.log("[booking-request]", payload);
-
-  return { success: true };
 }
 

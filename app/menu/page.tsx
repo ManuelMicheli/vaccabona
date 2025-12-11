@@ -3,9 +3,14 @@
 import { Button } from "@/components/button";
 import { restaurantMenu } from "@/constants/data";
 
+type MenuItem = {
+  name: string;
+  note: string;
+};
+
 type MenuColumnProps = {
   title: string;
-  items: { name: string; note: string }[];
+  items: ReadonlyArray<MenuItem> | MenuItem[];
 };
 
 function MenuColumn({ title, items }: MenuColumnProps) {
