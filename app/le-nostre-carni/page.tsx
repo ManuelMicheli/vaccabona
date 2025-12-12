@@ -147,59 +147,64 @@ export default function LeNostreCarniPage() {
         </div>
       </section>
 
-      {/* Carousel - Mobile: Vertical Stack | Desktop: Horizontal GSAP Scroll */}
+      {/* Carousel - Mobile: Optimized Vertical Scroll | Desktop: Horizontal GSAP Scroll */}
       {isMobile ? (
-        /* Mobile: Simple Vertical Stack */
-        <section className="relative bg-black px-4 py-12 space-y-16">
-          {meats.map((item, idx) => (
-            <article
-              key={item.id}
-              className="relative mx-auto w-full max-w-md"
-            >
-              {/* Background for each card */}
-              <div
-                className="absolute inset-0 -z-10 opacity-10"
-                style={
-                  item.image
-                    ? {
-                        backgroundImage: `url(${item.image})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        filter: "blur(40px)",
-                      }
-                    : { backgroundColor: "transparent" }
-                }
-              />
-
-              {/* Image Container */}
-              <div className="relative mb-6 drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
-                <ImageWithSpotlight
-                  src={item.image}
-                  alt={item.alt}
-                  priority={idx === 0}
-                  isHovered={false}
+        /* Mobile: Enhanced Vertical Stack with native scroll */
+        <section className="relative bg-black px-4 py-8 sm:py-12">
+          <div className="space-y-12 sm:space-y-16 md:space-y-20">
+            {meats.map((item, idx) => (
+              <article
+                key={item.id}
+                className="relative mx-auto w-full max-w-md scroll-mt-20"
+                style={{ scrollSnapAlign: "start" }}
+              >
+                {/* Background for each card - improved mobile optimization */}
+                <div
+                  className="absolute inset-0 -z-10 opacity-8 sm:opacity-10"
+                  style={
+                    item.image
+                      ? {
+                          backgroundImage: `url(${item.image})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                          filter: "blur(40px)",
+                        }
+                      : { backgroundColor: "transparent" }
+                  }
                 />
-              </div>
 
-              {/* Text Content */}
-              <div className="space-y-4 text-center">
-                <div className="text-xs uppercase tracking-[0.28em] text-stone-50 font-medium">
-                  {item.title}
+                {/* Image Container - optimized for mobile */}
+                <div className="relative mb-6 sm:mb-8 drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
+                  <ImageWithSpotlight
+                    src={item.image}
+                    alt={item.alt}
+                    priority={idx < 2}
+                    isHovered={false}
+                  />
                 </div>
-                <h3 className="font-serif text-2xl leading-tight text-stone-50">
-                  {item.subtitle}
-                </h3>
-                <ShimmerButton
-                  href="#"
-                  background="rgba(74, 0, 0, 1)"
-                  shimmerColor="#ff8b8b"
-                  className="h-12 w-full px-5 text-sm"
-                >
-                  Scopri di più
-                </ShimmerButton>
-              </div>
-            </article>
-          ))}
+
+                {/* Text Content - improved mobile typography */}
+                <div className="space-y-4 sm:space-y-5 text-center">
+                  <div className="text-[10px] sm:text-xs uppercase tracking-[0.28em] text-stone-50 font-medium">
+                    {item.title}
+                  </div>
+                  <h3 className="font-serif text-xl sm:text-2xl leading-tight text-stone-50 px-2">
+                    {item.subtitle}
+                  </h3>
+                  <div className="pt-2">
+                    <ShimmerButton
+                      href="#"
+                      background="rgba(74, 0, 0, 1)"
+                      shimmerColor="#ff8b8b"
+                      className="h-11 sm:h-12 w-full px-5 text-xs sm:text-sm"
+                    >
+                      Scopri di più
+                    </ShimmerButton>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </section>
       ) : (
         /* Desktop: Horizontal GSAP Scroll */

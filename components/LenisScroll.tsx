@@ -11,6 +11,28 @@ type LenisScrollProps = {
 
 export default function LenisScroll({ children }: LenisScrollProps) {
   useEffect(() => {
+    // Disable smooth scroll on mobile for better performance and native feel
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    
+    if (isMobile) {
+      // On mobile, just sync ScrollTrigger without Lenis smooth scroll
+      gsap.registerPlugin(ScrollTrigger);
+      const update = () => {
+        ScrollTrigger.update();
+      };
+      
+      const handleScroll = () => {
+        update();
+      };
+      
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+
+    // Desktop: Use Lenis for smooth scroll
     gsap.registerPlugin(ScrollTrigger);
     const lenis = new Lenis({
       lerp: 0.08, // heavy / luxury inertia

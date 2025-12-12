@@ -26,27 +26,27 @@ export default function MacelleriaPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(74,0,0,0.12),transparent_50%),radial-gradient(ellipse_at_80%_50%,rgba(107,17,17,0.08),transparent_50%)]" />
-        <div className="relative mx-auto max-w-6xl space-y-6 text-center">
-          <p className="text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
+        <div className="relative mx-auto max-w-6xl space-y-4 text-center sm:space-y-5 md:space-y-6">
+          <p className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
             Macelleria
           </p>
-          <h1 className="font-serif text-4xl text-stone-50 sm:text-5xl lg:text-6xl">
+          <h1 className="font-serif text-3xl leading-tight text-stone-50 sm:text-4xl md:text-5xl lg:text-6xl">
             Tagli pronti e marinati
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-stone-200/85">
+          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-stone-200/85 sm:text-base md:text-lg">
             Pronto-cuoci, marinature studiate, frollatura controllata. Tagli
             selezionati per la tua griglia.
           </p>
-          <div className="flex flex-col items-center gap-4 pt-4 sm:flex-row sm:justify-center">
+          <div className="flex flex-col items-center gap-3 pt-3 sm:flex-row sm:justify-center sm:gap-4 sm:pt-4">
             <ShimmerButton
               href="/#contatti"
               background="rgba(74, 0, 0, 1)"
               shimmerColor="#ff8b8b"
-              className="h-12 px-6 text-xs"
+              className="h-11 w-full px-5 text-xs sm:h-12 sm:w-auto sm:px-6"
             >
               Contattaci
             </ShimmerButton>
-            <div className="text-sm text-stone-300/80">
+            <div className="text-xs text-stone-300/80 sm:text-sm">
               <p>Orari: {hours.macelleria}</p>
               <p className="mt-1">Tel: {businessInfo.phone}</p>
             </div>
@@ -64,7 +64,7 @@ export default function MacelleriaPage() {
         {/* Subtle texture overlay */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.015),transparent_70%)]" />
         <div className="relative w-full">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+          <div className="grid gap-4 sm:gap-5 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
             {butcherProducts.map((product, index) => (
               <motion.div
                 key={product.name}

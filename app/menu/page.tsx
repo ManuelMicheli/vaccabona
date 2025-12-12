@@ -28,17 +28,17 @@ function MenuColumn({ title, items, icon, index }: MenuColumnProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
-      className="group relative flex flex-col rounded-3xl bg-gradient-to-br from-stone-950 via-stone-900/80 to-stone-950 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.45)] border border-white/5 before:pointer-events-none before:absolute before:inset-0 before:rounded-3xl before:bg-[radial-gradient(circle_at_20%_20%,rgba(74,0,0,0.08),transparent_50%)] before:opacity-0 before:transition before:duration-500 hover:before:opacity-100"
+      className="group relative flex flex-col rounded-2xl bg-gradient-to-br from-stone-950 via-stone-900/80 to-stone-950 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.45)] border border-white/5 sm:rounded-3xl sm:p-6 before:pointer-events-none before:absolute before:inset-0 before:rounded-2xl before:bg-[radial-gradient(circle_at_20%_20%,rgba(74,0,0,0.08),transparent_50%)] before:opacity-0 before:transition before:duration-500 hover:before:opacity-100 sm:before:rounded-3xl"
     >
-      <div className="flex items-center gap-3 border-b border-white/10 pb-4 mb-5">
+      <div className="flex items-center gap-2 border-b border-white/10 pb-3 mb-4 sm:gap-3 sm:pb-4 sm:mb-5">
         {icon && (
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#ff8b8b]/20 to-[#ff6b6b]/15 text-[#ff9999]">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#ff8b8b]/20 to-[#ff6b6b]/15 text-[#ff9999] sm:h-10 sm:w-10">
             {icon}
           </span>
         )}
-        <p className="text-xs uppercase tracking-[0.24em] text-[#ffb3b3] font-medium">{title}</p>
+        <p className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-[#ffb3b3] font-medium">{title}</p>
       </div>
-      <div className="space-y-5 flex-1">
+      <div className="space-y-4 flex-1 sm:space-y-5">
         {items.map((item, itemIndex) => (
           <motion.div
             key={item.name}
@@ -46,10 +46,10 @@ function MenuColumn({ title, items, icon, index }: MenuColumnProps) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: itemIndex * 0.05 }}
-            className="group/item relative pl-4 before:absolute before:left-0 before:top-2 before:h-2 before:w-2 before:rounded-full before:bg-gradient-to-r before:from-[#ff8b8b] before:to-[#ff6b6b] before:opacity-70 before:transition-opacity hover:before:opacity-100"
+            className="group/item relative pl-3 sm:pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-gradient-to-r before:from-[#ff8b8b] before:to-[#ff6b6b] before:opacity-70 before:transition-opacity hover:before:opacity-100 sm:before:h-2 sm:before:w-2"
           >
-            <p className="font-serif text-xl text-stone-50 transition-colors group-hover/item:text-[#ffb3b3]">{item.name}</p>
-            <p className="text-sm text-stone-400/90 mt-1 leading-relaxed">{item.note}</p>
+            <p className="font-serif text-lg text-stone-50 transition-colors group-hover/item:text-[#ffb3b3] sm:text-xl">{item.name}</p>
+            <p className="text-xs text-stone-400/90 mt-1 leading-relaxed sm:text-sm">{item.note}</p>
           </motion.div>
         ))}
       </div>
@@ -154,7 +154,7 @@ export default function MenuPage() {
   return (
     <div ref={containerRef} className="min-h-screen bg-stone-950 text-stone-100">
       {/* Hero Section - Nero elegante */}
-      <section className="relative w-full overflow-hidden bg-black px-4 py-20 md:px-10 lg:px-14 xl:px-16 2xl:px-20">
+      <section className="relative w-full overflow-hidden bg-black px-4 py-16 sm:py-20 md:px-10 lg:px-14 xl:px-16 2xl:px-20">
         {/* Background image */}
         <div
           className="absolute inset-0"
@@ -169,32 +169,32 @@ export default function MenuPage() {
 
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
-          className="relative mx-auto max-w-6xl space-y-6 text-center"
+          className="relative mx-auto max-w-6xl space-y-4 text-center sm:space-y-5 md:space-y-6"
         >
-          <p className="text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
+          <p className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
             Ristorante
           </p>
-          <h1 className="font-serif text-4xl text-stone-50 sm:text-5xl lg:text-6xl">
+          <h1 className="font-serif text-3xl leading-tight text-stone-50 sm:text-4xl md:text-5xl lg:text-6xl">
             Menù alla{" "}
             <span className="bg-gradient-to-r from-[#ff8b8b] via-[#ff9999] to-[#ffb3b3] bg-clip-text text-transparent">
               brace
             </span>
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-stone-200/85">
+          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-stone-200/85 sm:text-base md:text-lg">
             Antipasti selezionati, tagli alla brace e contorni pensati per esaltare la carne.
             Degustazioni carving-style, servizio curato e cantina selezionata.
           </p>
-          <div className="flex flex-col items-center gap-4 pt-4 sm:flex-row sm:justify-center">
+          <div className="flex flex-col items-center gap-3 pt-3 sm:flex-row sm:justify-center sm:gap-4 sm:pt-4">
             <ShimmerButton
               href="/#contatti"
               background="rgba(74, 0, 0, 1)"
               shimmerColor="#ff8b8b"
-              className="h-12 px-7 text-xs"
+              className="h-11 w-full px-6 text-xs sm:h-12 sm:w-auto sm:px-7"
             >
               Prenota la cena
             </ShimmerButton>
-            <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-stone-200/90 backdrop-blur-sm">
-              <ChefHat size={18} className="text-[#ff9999]" />
+            <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-xs text-stone-200/90 backdrop-blur-sm sm:gap-3 sm:px-5 sm:py-3 sm:text-sm">
+              <ChefHat size={16} className="text-[#ff9999] sm:w-[18px] sm:h-[18px]" />
               <span>Servizio alla carta</span>
             </div>
           </div>
@@ -202,10 +202,10 @@ export default function MenuPage() {
       </section>
 
       {/* Menu Sections - Grigio professionale */}
-      <section className="relative bg-gradient-to-b from-black via-stone-950 to-stone-950 px-4 pb-12 pt-16 md:px-10 lg:px-14 xl:px-16">
+      <section className="relative bg-gradient-to-b from-black via-stone-950 to-stone-950 px-4 pb-12 pt-12 sm:pt-16 md:px-10 lg:px-14 xl:px-16">
         {/* Elegant transition gradient */}
         <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black via-black/50 to-transparent" />
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           <MenuColumn
             title="Antipasti"
             items={restaurantMenu.starters}
@@ -252,20 +252,20 @@ export default function MenuPage() {
               <Flame className="h-6 w-6 text-[#ff9999]" />
               <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#ff8b8b]" />
             </div>
-            <p className="mb-3 text-xs font-medium uppercase tracking-[0.26em] text-[#ffb3b3]">
+            <p className="mb-3 text-[10px] sm:text-xs font-medium uppercase tracking-[0.26em] text-[#ffb3b3]">
               Le nostre eccellenze
             </p>
-            <h2 className="font-serif text-4xl tracking-tight text-stone-50 sm:text-5xl">
+            <h2 className="font-serif text-3xl tracking-tight text-stone-50 sm:text-4xl md:text-5xl">
               Signature Dishes
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-stone-300/80">
+            <p className="mx-auto mt-4 max-w-2xl text-sm text-stone-300/80 sm:text-base">
               Le nostre proposte d&apos;autore: dalla frollatura proprietaria alla brace viva,
               ogni dettaglio racconta la nostra passione per la carne di qualità.
             </p>
           </motion.div>
 
           {/* Signature cards */}
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {restaurantMenu.signatures.map((item, index) => (
               <SignatureDish key={item.title} item={item} index={index} />
             ))}
@@ -288,7 +288,7 @@ export default function MenuPage() {
               href="/#contatti"
               background="rgba(74, 0, 0, 1)"
               shimmerColor="#ff8b8b"
-              className="h-12 px-8 text-xs"
+              className="h-11 w-full px-6 text-xs sm:h-12 sm:w-auto sm:px-8"
             >
               Prenota il tuo tavolo
             </ShimmerButton>

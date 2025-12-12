@@ -96,33 +96,33 @@ export default function JapaneseWagyuPage() {
         {/* Content */}
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="relative z-10 min-h-screen flex flex-col justify-between p-6 md:p-10 lg:p-12 lg:pl-32 xl:pl-40"
+          className="relative z-10 min-h-screen flex flex-col justify-between p-4 sm:p-6 md:p-10 lg:p-12 lg:pl-20 xl:pl-32 2xl:pl-40"
         >
           {/* Top */}
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pt-4 sm:pt-6">
             <ShimmerButton
               href="/"
               background="rgba(0, 0, 0, 0.3)"
               shimmerColor="#ffffff"
-              className="h-9 px-4 text-[10px] backdrop-blur-sm border border-white/10"
+              className="h-8 px-3 text-[9px] backdrop-blur-sm border border-white/10 sm:h-9 sm:px-4 sm:text-[10px]"
               icon={ArrowLeft}
               iconPosition="left"
             >
               Home
             </ShimmerButton>
-            <span className="text-[9px] uppercase tracking-[0.4em] text-stone-500">
+            <span className="text-[8px] uppercase tracking-[0.4em] text-stone-500 sm:text-[9px]">
               Storia del mese
             </span>
           </div>
 
           {/* Main */}
-          <div className="flex-1 flex items-center py-16">
+          <div className="flex-1 flex items-center py-8 sm:py-12 md:py-16">
             <div className="max-w-3xl">
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-[10px] uppercase tracking-[0.4em] text-[#ff8b8b] mb-4"
+                className="text-[9px] sm:text-[10px] uppercase tracking-[0.4em] text-[#ff8b8b] mb-3 sm:mb-4"
               >
                 Un viaggio millenario
               </motion.p>
@@ -131,7 +131,7 @@ export default function JapaneseWagyuPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-stone-50 leading-[0.9] tracking-tight"
+                className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-stone-50 leading-[0.9] tracking-tight"
               >
                 Japanese<br />
                 <span className="text-[#ff8b8b]">Wagyu</span>
@@ -141,7 +141,7 @@ export default function JapaneseWagyuPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="mt-6 text-lg md:text-xl text-stone-300/80 max-w-md leading-relaxed"
+                className="mt-4 text-base text-stone-300/80 max-w-md leading-relaxed sm:mt-5 sm:text-lg md:mt-6 md:text-xl"
               >
                 Duemila anni di selezione genetica.<br />
                 Un&apos;eccellenza che il Giappone protegge come tesoro nazionale.
@@ -183,14 +183,14 @@ export default function JapaneseWagyuPage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 min-h-screen flex items-center py-20 lg:py-32">
-          <div className="w-full px-6 md:px-10 lg:px-12 lg:pl-32 xl:pl-40">
+        <div className="relative z-10 min-h-screen flex items-center py-12 sm:py-16 md:py-20 lg:py-32">
+          <div className="w-full px-4 sm:px-6 md:px-10 lg:px-12 lg:pl-20 xl:pl-32 2xl:pl-40">
             <div className="max-w-4xl">
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={isStoryInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-[10px] uppercase tracking-[0.3em] text-[#ff8b8b]"
+                className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-[#ff8b8b]"
               >
                 La storia
               </motion.span>
@@ -199,7 +199,7 @@ export default function JapaneseWagyuPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isStoryInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="mt-4 font-serif text-4xl md:text-5xl lg:text-6xl text-stone-50 leading-[0.95]"
+                className="mt-3 font-serif text-3xl text-stone-50 leading-[0.95] sm:text-4xl sm:mt-4 md:text-5xl lg:text-6xl"
               >
                 Dall&apos;era Meiji al<br />
                 <span className="text-[#ff8b8b]">tesoro nazionale</span>
@@ -213,7 +213,7 @@ export default function JapaneseWagyuPage() {
               />
 
               {/* Timeline Cards */}
-              <div className="grid md:grid-cols-3 gap-6 mt-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6 mt-6 sm:mt-8">
                 {[
                   {
                     period: "II secolo d.C.",
@@ -288,8 +288,8 @@ export default function JapaneseWagyuPage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 min-h-[80vh] flex items-center py-20">
-          <div className="w-full px-6 md:px-10 lg:px-12 lg:pl-32 xl:pl-40">
+        <div className="relative z-10 min-h-[70vh] sm:min-h-[80vh] flex items-center py-12 sm:py-16 md:py-20">
+          <div className="w-full px-4 sm:px-6 md:px-10 lg:px-12 lg:pl-20 xl:pl-32 2xl:pl-40">
             <div className="max-w-2xl">
               <motion.span
                 initial={{ opacity: 0 }}
@@ -304,7 +304,7 @@ export default function JapaneseWagyuPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isCtaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="mt-4 font-serif text-4xl md:text-5xl lg:text-6xl text-stone-50 leading-[0.95]"
+                className="mt-3 font-serif text-3xl text-stone-50 leading-[0.95] sm:text-4xl sm:mt-4 md:text-5xl lg:text-6xl"
               >
                 Solo gradi<br />
                 <span className="text-[#ff8b8b]">A4 e A5</span>
@@ -325,7 +325,7 @@ export default function JapaneseWagyuPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isCtaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="mt-10 flex flex-col sm:flex-row gap-4"
+                className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:mt-10"
               >
                 <ShimmerButton
                   href="/le-nostre-carni"

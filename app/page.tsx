@@ -47,11 +47,11 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-stone-950/80 to-black/85" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(226,139,63,0.18),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(210,75,56,0.12),transparent_26%)]" />
         </div>
-        <div className="relative flex min-h-screen flex-col items-center justify-end gap-4 px-4 pb-16 pt-20 text-center sm:items-end sm:gap-6 sm:px-6 sm:pb-20 sm:pt-24 sm:text-right md:px-10 lg:px-14 xl:px-16 2xl:px-20">
-          <div className="w-full max-w-3xl space-y-4 sm:space-y-5">
-            <h1 className="font-serif text-3xl leading-tight tracking-tight text-stone-50 sm:text-4xl md:text-5xl lg:text-6xl">
+        <div className="relative flex min-h-screen flex-col items-center justify-end gap-4 px-4 pb-12 pt-16 text-center sm:items-end sm:gap-5 sm:px-6 sm:pb-16 sm:pt-20 sm:text-right md:px-10 md:pb-20 md:pt-24 lg:px-14 xl:px-16 2xl:px-20">
+          <div className="w-full max-w-3xl space-y-4 sm:space-y-5 md:space-y-6">
+            <h1 className="font-serif text-3xl leading-tight tracking-tight text-stone-50 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
               Vacca Bòna
-              <span className="mt-2 block text-xl font-normal text-[#ffb3b3]/80 sm:text-2xl md:text-3xl">
+              <span className="mt-2 block text-lg font-normal text-[#ffb3b3]/80 sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
                 Macelleria di qualità &amp; Ristorante di carne
               </span>
           </h1>
@@ -60,23 +60,23 @@ export default function Home() {
                 href="#contatti"
                 background="rgba(74, 0, 0, 1)"
                 shimmerColor="#ff8b8b"
-                className="h-12 px-6 text-sm sm:text-xs"
+                className="h-11 w-full px-6 text-xs sm:h-12 sm:w-auto sm:text-xs"
                 icon={Calendar}
               >
                 Prenota Tavolo
               </ShimmerButton>
               <ShimmerButton
-                href="#macelleria"
+                href="/macelleria"
                 background="rgba(0, 0, 0, 0.4)"
                 shimmerColor="#404040"
-                className="h-12 px-6 text-sm sm:text-xs border-white/30"
+                className="h-11 w-full px-6 text-xs sm:h-12 sm:w-auto sm:text-xs border-white/30"
                 icon={ForkKnife}
               >
                 Vedi Shop
               </ShimmerButton>
-              <div className="flex items-center justify-center gap-3 rounded-full bg-white/10 px-4 py-3 text-sm text-stone-200/80 sm:justify-start">
-                <Flame size={16} className="text-[#ff8b8b]" />
-                <span className="text-xs sm:text-sm">Brace viva · Dry-aged 21gg</span>
+              <div className="flex items-center justify-center gap-2 rounded-full bg-white/10 px-3 py-2.5 text-xs text-stone-200/80 sm:gap-3 sm:px-4 sm:py-3 sm:text-sm sm:justify-start">
+                <Flame size={14} className="text-[#ff8b8b] sm:w-4 sm:h-4" />
+                <span>Brace viva · Dry-aged 21gg</span>
               </div>
             </div>
           </div>
@@ -120,23 +120,23 @@ export default function Home() {
           }}
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,0,0,0.2),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(0,0,0,0.3),transparent_40%)]" />
-          <div className="relative z-10 flex w-full flex-col gap-6 px-6 pb-16 md:px-12 lg:px-16">
-            <div className="space-y-4 max-w-2xl">
+          <div className="relative z-10 flex w-full flex-col gap-4 px-4 pb-12 sm:gap-5 sm:px-6 sm:pb-16 md:gap-6 md:px-12 lg:px-16">
+            <div className="space-y-3 sm:space-y-4 max-w-2xl">
               <ShimmerButton
                 href="/le-nostre-carni"
                 background="rgba(74, 0, 0, 1)"
                 shimmerColor="#ff8b8b"
-                className="h-12 px-6 text-xs"
+                className="h-11 w-full px-5 text-xs sm:h-12 sm:w-auto sm:px-6"
               >
                 Scopri le nostre carni
               </ShimmerButton>
-              <p className="text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
+              <p className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
                 Dal bancone alla sala
               </p>
-              <h2 className="font-serif text-4xl text-stone-50 sm:text-5xl">
+              <h2 className="font-serif text-3xl leading-tight text-stone-50 sm:text-4xl md:text-5xl lg:text-6xl">
                 Storia di un taglio fatto bene
               </h2>
-              <p className="text-base text-stone-200/85 md:text-lg">
+              <p className="text-sm leading-relaxed text-stone-200/85 sm:text-base md:text-lg lg:text-xl">
                 Una macelleria di quartiere che cresce, guidata da Danilo Lacagnina. Frollatura
                 proprietaria, selezione giornaliera e una cucina che mette la brace al centro.
                 Materia prima italiana e internazionale, servizio calibrato e atmosfera calda.
@@ -152,26 +152,26 @@ export default function Home() {
         y={24}
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(74,0,0,0.12),transparent_50%),radial-gradient(ellipse_at_80%_50%,rgba(107,17,17,0.08),transparent_50%)]" />
-        <div className="relative mx-auto max-w-4xl space-y-8">
-          <div className="text-center space-y-4">
-            <p className="text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
+        <div className="relative mx-auto max-w-4xl space-y-6 sm:space-y-8">
+          <div className="text-center space-y-3 sm:space-y-4">
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
               Storia del mese
             </p>
-            <h2 className="font-serif text-4xl text-stone-50 sm:text-5xl lg:text-6xl">
+            <h2 className="font-serif text-3xl leading-tight text-stone-50 sm:text-4xl md:text-5xl lg:text-6xl">
               Japanese Wagyu
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-stone-200/85">
+            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-stone-200/85 sm:text-base md:text-lg">
               L&apos;eccellenza che nasce dalla tradizione. Scopri la storia millenaria della carne più pregiata al mondo, dalle origini come animali da lavoro all&apos;era moderna del tesoro nazionale giapponese.
             </p>
           </div>
           
-          <div className="relative mx-auto max-w-3xl rounded-2xl bg-gradient-to-br from-stone-900/60 to-black/60 p-8 backdrop-blur-sm border border-white/5">
-            <div className="space-y-6">
+          <div className="relative mx-auto max-w-3xl rounded-xl sm:rounded-2xl bg-gradient-to-br from-stone-900/60 to-black/60 p-5 sm:p-6 md:p-8 backdrop-blur-sm border border-white/5">
+            <div className="space-y-5 sm:space-y-6">
               <div>
-                <h3 className="font-serif text-2xl text-stone-50 mb-3">
+                <h3 className="font-serif text-xl text-stone-50 mb-2 sm:text-2xl sm:mb-3">
                   Un patrimonio di secoli
                 </h3>
-                <p className="text-stone-200/80 leading-relaxed">
+                <p className="text-sm leading-relaxed text-stone-200/80 sm:text-base">
                   Il Wagyu giapponese affonda le sue radici nella storia millenaria del Giappone. 
                   I bovini Wagyu discendono da ceppi autoctoni introdotti nell&apos;arcipelago intorno 
                   al II secolo d.C., inizialmente utilizzati come animali da tiro. Per secoli, 
@@ -182,10 +182,10 @@ export default function Home() {
               </div>
               
               <div>
-                <h3 className="font-serif text-2xl text-stone-50 mb-3">
+                <h3 className="font-serif text-xl text-stone-50 mb-2 sm:text-2xl sm:mb-3">
                   Perché è così pregiato
                 </h3>
-                <p className="text-stone-200/80 leading-relaxed">
+                <p className="text-sm leading-relaxed text-stone-200/80 sm:text-base">
                   La genetica unica dei Wagyu favorisce una marezzatura intramuscolare estrema 
                   (BMS 1-12), con alta ereditabilità per tenerezza e sapore. L&apos;alimentazione 
                   controllata combina riso, orzo e fieno di prima qualità, spesso integrati con 
@@ -196,12 +196,12 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex justify-center pt-4">
+          <div className="flex justify-center pt-2 sm:pt-4">
             <ShimmerButton
               href="/storia-del-mese/japanese-wagyu"
               background="rgba(74, 0, 0, 1)"
               shimmerColor="#ff8b8b"
-              className="h-12 px-8 text-xs"
+              className="h-11 w-full px-6 text-xs sm:h-12 sm:w-auto sm:px-8"
             >
               Leggi la storia completa
             </ShimmerButton>
@@ -214,24 +214,24 @@ export default function Home() {
         className="mt-16 w-full px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20"
         y={18}
       >
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="space-y-2">
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
               Social proof
             </p>
-            <h3 className="font-serif text-3xl text-stone-50 sm:text-4xl">
+            <h3 className="font-serif text-2xl text-stone-50 sm:text-3xl md:text-4xl">
               Feed in evidenza
             </h3>
-            <p className="text-stone-200/80">
+            <p className="text-sm text-stone-200/80 sm:text-base">
               Ultimi reel e scatti dal bancone e dalla sala.
             </p>
           </div>
-        <div className="flex items-center gap-3 text-sm text-[#ffd6d6]">
-            <Sparkles size={16} />
+        <div className="flex items-center gap-2 text-xs text-[#ffd6d6] sm:text-sm">
+            <Sparkles size={14} className="sm:w-4 sm:h-4" />
             Placeholder dinamico Instagram
           </div>
         </div>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {socialHighlights.map((item) => (
             <div
               key={item.title}
@@ -277,31 +277,31 @@ export default function Home() {
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/82 to-black/90" />
-        <div className="relative flex min-h-[70vh] flex-col items-center justify-center px-4 py-16 text-center md:px-10 lg:px-14 xl:px-16 2xl:px-20">
-          <h3 className="font-serif text-3xl text-stone-50 sm:text-4xl">
+        <div className="relative flex min-h-[60vh] sm:min-h-[70vh] flex-col items-center justify-center px-4 py-12 text-center sm:py-16 md:px-10 lg:px-14 xl:px-16 2xl:px-20">
+          <h3 className="font-serif text-2xl leading-tight text-stone-50 sm:text-3xl md:text-4xl lg:text-5xl">
             Taglio su misura, Ti aspettiamo in bottega e a cena
           </h3>
-          <p className="mt-3 max-w-2xl text-base text-stone-200/85 sm:text-lg">
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-stone-200/85 sm:text-base md:text-lg">
             Selezione giornaliera, frollatura curata e brace viva. Passa in macelleria o prenota per la
             sala: siamo pronti con consigli su cotture e tagli.
           </p>
-          <div className="mt-6 grid gap-3 text-sm text-stone-200/90">
-            <div>
-              <span className="font-heading text-lg text-[#ff8b8b]">Macelleria</span>
-              <p>{hours.macelleria}</p>
+          <div className="mt-6 grid gap-4 text-sm text-stone-200/90 sm:gap-5 sm:text-base md:grid-cols-2 md:max-w-3xl md:gap-x-8 md:gap-y-5">
+            <div className="space-y-1">
+              <span className="block font-heading text-base text-[#ff8b8b] sm:text-lg">Macelleria</span>
+              <p className="text-stone-300/90">{hours.macelleria}</p>
             </div>
-            <div>
-              <span className="font-heading text-lg text-[#ff8b8b]">Ristorante</span>
-              <p>{hours.ristorante}</p>
+            <div className="space-y-1">
+              <span className="block font-heading text-base text-[#ff8b8b] sm:text-lg">Ristorante</span>
+              <p className="text-stone-300/90">{hours.ristorante}</p>
             </div>
-            <div>
-              <span className="font-heading text-lg text-[#ff8b8b]">Prenotazioni</span>
-              <p>{businessInfo.mobile}</p>
-              <p>Tel: {businessInfo.phone}</p>
+            <div className="space-y-1">
+              <span className="block font-heading text-base text-[#ff8b8b] sm:text-lg">Prenotazioni</span>
+              <p className="text-stone-300/90">{businessInfo.mobile}</p>
+              <p className="text-stone-300/90">Tel: {businessInfo.phone}</p>
             </div>
-            <div>
-              <span className="font-heading text-lg text-[#ff8b8b]">Indirizzo</span>
-              <p>{businessInfo.address}</p>
+            <div className="space-y-1">
+              <span className="block font-heading text-base text-[#ff8b8b] sm:text-lg">Indirizzo</span>
+              <p className="text-stone-300/90">{businessInfo.address}</p>
             </div>
           </div>
         </div>
@@ -312,25 +312,25 @@ export default function Home() {
         className="mt-16 w-full px-4 pb-24 md:px-8 lg:px-12 xl:px-16 2xl:px-20"
         y={18}
       >
-        <div className="grid gap-8 rounded-3xl bg-stone-950/80 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.45)] md:grid-cols-[1.1fr_0.9fr] md:p-10">
+        <div className="grid gap-6 rounded-2xl bg-stone-950/80 p-5 shadow-[0_20px_80px_rgba(0,0,0,0.45)] sm:gap-8 sm:rounded-3xl sm:p-6 md:grid-cols-[1.1fr_0.9fr] md:p-10">
           <div>
-            <p className="text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
               Prenotazioni &amp; Contatti
             </p>
-            <h3 className="font-serif text-3xl text-stone-50 sm:text-4xl">
+            <h3 className="font-serif text-2xl text-stone-50 sm:text-3xl md:text-4xl">
               Prenota il tuo tavolo
             </h3>
-            <p className="mt-2 text-stone-200/80">
+            <p className="mt-2 text-sm text-stone-200/80 sm:text-base">
               Compila il form: il team riceve la richiesta e conferma via
               telefono. Server Action pronta per integrare CRM o notifiche.
             </p>
 
-            <form action={submitBooking} className="mt-6 space-y-4">
-              <div className="grid gap-4 lg:grid-cols-2">
+            <form action={submitBooking} className="mt-5 space-y-4 sm:mt-6">
+              <div className="grid gap-4 sm:grid-cols-2">
                 <InputField name="name" label="Nome e Cognome" required />
                 <InputField name="phone" label="Telefono" required />
               </div>
-              <div className="grid gap-4 lg:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2">
                 <InputField
                   name="date"
                   label="Data"
@@ -359,11 +359,11 @@ export default function Home() {
                 type="submit"
                 background="rgba(74, 0, 0, 1)"
                 shimmerColor="#ff8b8b"
-                className="w-full h-12 justify-center text-sm"
+                className="w-full h-11 justify-center text-xs sm:h-12 sm:text-sm"
               >
                 Invia richiesta
               </ShimmerButton>
-              <p className="text-xs text-stone-400">
+              <p className="text-[10px] text-stone-400 sm:text-xs">
                 MVP: la richiesta viene loggata lato server. Integra Stripe/CRM
                 al prossimo step.
               </p>
@@ -371,20 +371,20 @@ export default function Home() {
           </div>
 
           <div className="space-y-4">
-            <div className="glass-surface overflow-hidden rounded-3xl">
+            <div className="glass-surface overflow-hidden rounded-2xl sm:rounded-3xl">
               <iframe
                 title="Mappa Vacca Bòna Casorezzo"
                 src="https://maps.google.com/maps?q=Via%20Roma%2039%20Casorezzo%20MI&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                className="h-[240px] w-full"
+                className="h-[200px] w-full sm:h-[240px]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
-            <div className="rounded-3xl bg-white/5 p-5 shadow-[0_10px_36px_rgba(0,0,0,0.35)]">
-              <p className="text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
+            <div className="rounded-2xl bg-white/5 p-4 shadow-[0_10px_36px_rgba(0,0,0,0.35)] sm:rounded-3xl sm:p-5">
+              <p className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
                 Contatti rapidi
               </p>
-              <div className="mt-3 space-y-2 text-sm text-stone-200/80">
+              <div className="mt-3 space-y-2 text-xs text-stone-200/80 sm:text-sm">
                 <a
                   className="block rounded-lg border border-transparent px-2 py-1 transition hover:border-[#b54c4c]/60 hover:text-[#ffb3b3]"
                   href={`tel:${businessInfo.mobile.replace(/\s+/g, "")}`}
