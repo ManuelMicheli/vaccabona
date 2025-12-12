@@ -2,8 +2,7 @@
 
 import {
   Calendar,
-  Flame,
-  ForkKnife,
+  PhoneCall,
   Sparkles,
   Users,
 } from "lucide-react";
@@ -11,6 +10,7 @@ import type { ReactNode } from "react";
 import { submitBooking } from "./actions";
 import { AnimatedSection } from "@/components/animated-section";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
+import { JapaneseWagyuSlider } from "@/components/japanese-wagyu-slider";
 import { VelocityScroll } from "@/components/velocity-scroll";
 import {
   businessInfo,
@@ -66,18 +66,14 @@ export default function Home() {
                 Prenota Tavolo
               </ShimmerButton>
               <ShimmerButton
-                href="/macelleria"
+                href={`tel:${businessInfo.mobile.replace(/\s+/g, "")}`}
                 background="rgba(0, 0, 0, 0.4)"
                 shimmerColor="#404040"
                 className="h-11 w-full px-6 text-xs sm:h-12 sm:w-auto sm:text-xs border-white/30"
-                icon={ForkKnife}
+                icon={PhoneCall}
               >
-                Vedi Shop
+                Chiama ora
               </ShimmerButton>
-              <div className="flex items-center justify-center gap-2 rounded-full bg-white/10 px-3 py-2.5 text-xs text-stone-200/80 sm:gap-3 sm:px-4 sm:py-3 sm:text-sm sm:justify-start">
-                <Flame size={14} className="text-[#ff8b8b] sm:w-4 sm:h-4" />
-                <span>Brace viva · Dry-aged 21gg</span>
-              </div>
             </div>
           </div>
         </div>
@@ -120,20 +116,9 @@ export default function Home() {
           }}
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,0,0,0.2),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(0,0,0,0.3),transparent_40%)]" />
-          <div className="relative z-10 flex w-full flex-col gap-4 px-4 pb-12 sm:gap-5 sm:px-6 sm:pb-16 md:gap-6 md:px-12 lg:px-16">
+          <div className="relative z-10 flex w-full flex-col justify-between gap-4 px-4 pb-12 sm:gap-5 sm:px-6 sm:pb-16 md:gap-6 md:px-12 lg:px-16">
             <div className="space-y-3 sm:space-y-4 max-w-2xl">
-              <ShimmerButton
-                href="/le-nostre-carni"
-                background="rgba(74, 0, 0, 1)"
-                shimmerColor="#ff8b8b"
-                className="h-11 w-full px-5 text-xs sm:h-12 sm:w-auto sm:px-6"
-              >
-                Scopri le nostre carni
-              </ShimmerButton>
-              <p className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
-                Dal bancone alla sala
-              </p>
-              <h2 className="font-serif text-3xl leading-tight text-stone-50 sm:text-4xl md:text-5xl lg:text-6xl">
+              <h2 className="font-serif text-3xl leading-tight text-stone-50 sm:text-4xl md:text-5xl lg:text-6xl whitespace-nowrap">
                 Storia di un taglio fatto bene
               </h2>
               <p className="text-sm leading-relaxed text-stone-200/85 sm:text-base md:text-lg lg:text-xl">
@@ -142,22 +127,93 @@ export default function Home() {
                 Materia prima italiana e internazionale, servizio calibrato e atmosfera calda.
               </p>
             </div>
+            <div className="flex justify-end">
+              <ShimmerButton
+                href="/le-nostre-carni"
+                background="rgba(74, 0, 0, 1)"
+                shimmerColor="#ff8b8b"
+                className="h-11 w-auto px-5 text-xs sm:h-12 sm:px-6"
+              >
+                Scopri le nostre carni
+              </ShimmerButton>
+            </div>
           </div>
         </div>
+        {/* Gradient transition to next section */}
+        <div className="h-24 bg-gradient-to-b from-transparent via-black/50 to-black" />
+      </AnimatedSection>
+
+      <AnimatedSection
+        id="gallery-social"
+        className="relative mt-0 w-full overflow-hidden bg-gradient-to-b from-black via-stone-950 to-black px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20"
+        y={18}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(74,0,0,0.15),transparent_50%),radial-gradient(ellipse_at_80%_50%,rgba(107,17,17,0.12),transparent_50%),radial-gradient(ellipse_at_50%_20%,rgba(139,0,0,0.08),transparent_60%),radial-gradient(ellipse_at_50%_80%,rgba(153,27,27,0.1),transparent_60%)]" />
+        <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="space-y-2">
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
+              Social proof
+            </p>
+            <h3 className="font-serif text-2xl text-stone-50 sm:text-3xl md:text-4xl">
+              Feed in evidenza
+            </h3>
+            <p className="text-sm text-stone-200/80 sm:text-base">
+              Ultimi reel e scatti dal bancone e dalla sala.
+            </p>
+          </div>
+        <div className="relative flex items-center gap-2 text-xs text-[#ffd6d6] sm:text-sm">
+            <Sparkles size={14} className="sm:w-4 sm:h-4" />
+            Placeholder dinamico Instagram
+          </div>
+        </div>
+        <div className="relative mt-6 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {socialHighlights.map((item) => (
+            <div
+              key={item.title}
+              className="group relative h-48 overflow-hidden rounded-2xl bg-gradient-to-br from-stone-950 via-stone-900/70 to-stone-950 p-4 shadow-[0_12px_38px_rgba(0,0,0,0.4)]"
+              style={
+                item.image
+                  ? {
+                      backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.75)), url(${item.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }
+                  : undefined
+              }
+            >
+              {!item.image && (
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(210,75,56,0.12),transparent_45%)] transition duration-500 group-hover:scale-110" />
+              )}
+              <div className="relative flex h-full flex-col justify-between">
+                <p className="text-xs uppercase tracking-[0.22em] text-[#ffb3b3]/80">
+                  Reel
+                </p>
+                <div>
+                  <h4 className="font-serif text-xl text-stone-50">{item.title}</h4>
+                  <p className="text-sm text-stone-300/80">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* Gradient transition to next section */}
+        <div className="relative h-24 bg-gradient-to-b from-transparent via-black/50 to-black" />
       </AnimatedSection>
 
       {/* Storia del mese - Japanese Wagyu */}
       <AnimatedSection
-        className="relative w-full overflow-hidden bg-gradient-to-b from-black via-stone-950 to-black px-4 py-20 md:px-10 lg:px-14 xl:px-16 2xl:px-20"
+        className="relative w-full overflow-hidden bg-gradient-to-b from-black via-stone-950 to-black px-4 pt-0 pb-0 md:px-10 lg:px-14 xl:px-16 2xl:px-20"
         y={24}
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(74,0,0,0.12),transparent_50%),radial-gradient(ellipse_at_80%_50%,rgba(107,17,17,0.08),transparent_50%)]" />
-        <div className="relative mx-auto max-w-4xl space-y-6 sm:space-y-8">
+        
+        {/* Mobile Version - Original Layout */}
+        <div className="relative mx-auto max-w-4xl space-y-6 sm:space-y-8 lg:hidden">
           <div className="text-center space-y-3 sm:space-y-4">
             <p className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
               Storia del mese
             </p>
-            <h2 className="font-serif text-3xl leading-tight text-stone-50 sm:text-4xl md:text-5xl lg:text-6xl">
+            <h2 className="font-serif text-3xl leading-tight text-stone-50 sm:text-4xl md:text-5xl">
               Japanese Wagyu
             </h2>
             <p className="mx-auto max-w-2xl text-sm leading-relaxed text-stone-200/85 sm:text-base md:text-lg">
@@ -195,77 +251,28 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          <div className="flex justify-center pt-2 sm:pt-4">
-            <ShimmerButton
-              href="/storia-del-mese/japanese-wagyu"
-              background="rgba(74, 0, 0, 1)"
-              shimmerColor="#ff8b8b"
-              className="h-11 w-full px-6 text-xs sm:h-12 sm:w-auto sm:px-8"
-            >
-              Leggi la storia completa
-            </ShimmerButton>
-          </div>
         </div>
-      </AnimatedSection>
 
-      <AnimatedSection
-        id="gallery-social"
-        className="mt-16 w-full px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20"
-        y={18}
-      >
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="space-y-2">
-            <p className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
-              Social proof
+        {/* Desktop Version - Interactive Slider */}
+        <div className="hidden lg:block">
+          <div className="text-center space-y-4 mb-12">
+            <p className="text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
+              Storia del mese
             </p>
-            <h3 className="font-serif text-2xl text-stone-50 sm:text-3xl md:text-4xl">
-              Feed in evidenza
-            </h3>
-            <p className="text-sm text-stone-200/80 sm:text-base">
-              Ultimi reel e scatti dal bancone e dalla sala.
+            <h2 className="font-serif text-4xl leading-tight text-stone-50 md:text-5xl lg:text-6xl">
+              Japanese Wagyu
+            </h2>
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-stone-200/85 md:text-lg">
+              L&apos;eccellenza che nasce dalla tradizione. Scopri la storia millenaria della carne più pregiata al mondo.
             </p>
           </div>
-        <div className="flex items-center gap-2 text-xs text-[#ffd6d6] sm:text-sm">
-            <Sparkles size={14} className="sm:w-4 sm:h-4" />
-            Placeholder dinamico Instagram
-          </div>
-        </div>
-        <div className="mt-6 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {socialHighlights.map((item) => (
-            <div
-              key={item.title}
-              className="group relative h-48 overflow-hidden rounded-2xl bg-gradient-to-br from-stone-950 via-stone-900/70 to-stone-950 p-4 shadow-[0_12px_38px_rgba(0,0,0,0.4)]"
-              style={
-                item.image
-                  ? {
-                      backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.75)), url(${item.image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }
-                  : undefined
-              }
-            >
-              {!item.image && (
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(210,75,56,0.12),transparent_45%)] transition duration-500 group-hover:scale-110" />
-              )}
-              <div className="relative flex h-full flex-col justify-between">
-                <p className="text-xs uppercase tracking-[0.22em] text-[#ffb3b3]/80">
-                  Reel
-                </p>
-                <div>
-                  <h4 className="font-serif text-xl text-stone-50">{item.title}</h4>
-                  <p className="text-sm text-stone-300/80">{item.description}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+          <JapaneseWagyuSlider />
         </div>
       </AnimatedSection>
 
       <AnimatedSection
         id="orari-hero"
-        className="relative mt-16 w-full overflow-hidden px-0 md:mt-20"
+        className="relative mt-0 w-full overflow-hidden px-0"
         y={24}
       >
         <div
@@ -277,7 +284,7 @@ export default function Home() {
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/82 to-black/90" />
-        <div className="relative flex min-h-[60vh] sm:min-h-[70vh] flex-col items-center justify-center px-4 py-12 text-center sm:py-16 md:px-10 lg:px-14 xl:px-16 2xl:px-20">
+        <div className="relative flex min-h-[60vh] sm:min-h-[70vh] flex-col items-center justify-center px-4 pt-12 pb-0 text-center sm:pt-16 md:px-10 lg:px-14 xl:px-16 2xl:px-20">
           <h3 className="font-serif text-2xl leading-tight text-stone-50 sm:text-3xl md:text-4xl lg:text-5xl">
             Taglio su misura, Ti aspettiamo in bottega e a cena
           </h3>
@@ -309,7 +316,7 @@ export default function Home() {
 
       <AnimatedSection
         id="contatti"
-        className="mt-16 w-full px-4 pb-24 md:px-8 lg:px-12 xl:px-16 2xl:px-20"
+        className="mt-0 w-full px-4 pb-24 md:px-8 lg:px-12 xl:px-16 2xl:px-20"
         y={18}
       >
         <div className="grid gap-6 rounded-2xl bg-stone-950/80 p-5 shadow-[0_20px_80px_rgba(0,0,0,0.45)] sm:gap-8 sm:rounded-3xl sm:p-6 md:grid-cols-[1.1fr_0.9fr] md:p-10">

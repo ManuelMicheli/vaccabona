@@ -195,7 +195,6 @@ const footerLinkGroups: FooterLinkGroup[] = [
     label: "Esperienze",
     links: [
       { title: "Le Nostre Carni", href: "/le-nostre-carni" },
-      { title: "Storia del Mese", href: "/storia-del-mese/japanese-wagyu" },
       { title: "Selezione Tagli", href: "/macelleria" },
       { title: "Griglia & Sala", href: "/menu" },
     ],
