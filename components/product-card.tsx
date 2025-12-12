@@ -34,10 +34,10 @@ export function ProductCard({ product, className }: ProductCardProps) {
         <div className="relative mb-4 h-40 overflow-hidden rounded-2xl border border-white/5">
           <Image
             src={product.image}
-            alt={product.name}
+            alt={`${product.name} - ${product.description}`}
             fill
             className="object-cover"
-            sizes="320px"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/35" />
         </div>

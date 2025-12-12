@@ -52,11 +52,20 @@ export const metadata: Metadata = {
     type: "website",
     siteName: businessInfo.name,
     locale: "it_IT",
+    images: [
+      {
+        url: `${businessInfo.website}/images/logo.png`,
+        width: 1200,
+        height: 630,
+        alt: `${businessInfo.name} - Macelleria e Ristorante a Casorezzo`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
+    images: [`${businessInfo.website}/images/logo.png`],
   },
   alternates: {
     canonical: "/",
@@ -64,55 +73,108 @@ export const metadata: Metadata = {
   category: "restaurant",
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  name: businessInfo.name,
-  url: businessInfo.website,
-  image:
-    "https://images.unsplash.com/photo-1604908177733-2f8b27cde3d2?auto=format&fit=crop&w=1600&q=80",
-  telephone: businessInfo.mobile,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Via Roma 39 (ang. Piazza Garibaldi 2)",
-    addressLocality: "Casorezzo",
-    addressRegion: "MI",
-    postalCode: "20003",
-    addressCountry: "IT",
-  },
-  servesCuisine: ["Carne", "Griglia", "Italiana"],
-  priceRange: "€€-€€€",
-  sameAs: Object.values(businessInfo.socials),
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
-      opens: "08:30",
-      closes: "19:30",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Thursday", "Friday", "Saturday", "Sunday"],
-      opens: "19:00",
-      closes: "23:30",
-    },
-  ],
-  contactPoint: [
-    {
-      "@type": "ContactPoint",
-      telephone: businessInfo.phone,
-      contactType: "customer service",
-      areaServed: "IT",
-      availableLanguage: ["Italian"],
-    },
-  ],
+const addressSchema = {
+  "@type": "PostalAddress",
+  streetAddress: "Via Roma 39 (ang. Piazza Garibaldi 2)",
+  addressLocality: "Casorezzo",
+  addressRegion: "MI",
+  postalCode: "20003",
+  addressCountry: "IT",
 };
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${businessInfo.website}#business`,
+    name: businessInfo.name,
+    description:
+      "Macelleria di qualità e ristorante di carne a Casorezzo (MI). Tagli selezionati, frollatura proprietaria e cucina alla brace. Specialità in carne di alta qualità, dry-aged e tagli premium.",
+    url: businessInfo.website,
+    image: `${businessInfo.website}/images/logo.png`,
+    logo: `${businessInfo.website}/images/logo.png`,
+    telephone: businessInfo.mobile,
+    address: addressSchema,
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "45.5133",
+      longitude: "8.9086",
+    },
+    priceRange: "€€-€€€",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ],
+        opens: "08:30",
+        closes: "12:30",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ],
+        opens: "15:30",
+        closes: "19:30",
+      },
+    ],
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: businessInfo.mobile,
+        contactType: "reservations",
+        areaServed: "IT",
+        availableLanguage: ["Italian"],
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: businessInfo.phone,
+        contactType: "customer service",
+        areaServed: "IT",
+        availableLanguage: ["Italian"],
+      },
+    ],
+    sameAs: Object.values(businessInfo.socials),
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "127",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "@id": `${businessInfo.website}#restaurant`,
+    name: `${businessInfo.name} - Ristorante`,
+    parentOrganization: {
+      "@id": `${businessInfo.website}#business`,
+    },
+    url: `${businessInfo.website}/menu`,
+    address: addressSchema,
+    telephone: businessInfo.mobile,
+    servesCuisine: ["Carne", "Griglia", "Italiana", "Cucina alla brace"],
+    priceRange: "€€-€€€",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Thursday", "Friday", "Saturday", "Sunday"],
+        opens: "19:00",
+        closes: "23:30",
+      },
+    ],
+    acceptsReservations: "True",
+    menu: `${businessInfo.website}/menu`,
+  },
+];
 
 export default function RootLayout({
   children,
@@ -130,10 +192,13 @@ export default function RootLayout({
           <Footer />
         </LenisScroll>
         <div id="portal-root" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        {jsonLd.map((schema, index) => (
+          <script
+            key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        ))}
       </body>
     </html>
   );

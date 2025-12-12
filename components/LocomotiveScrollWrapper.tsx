@@ -13,9 +13,11 @@ export default function LocomotiveScrollWrapper({
   children,
 }: LocomotiveScrollWrapperProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const locoRef = useRef<any | null>(null);
 
   useLayoutEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let locomotive: any | null = null;
     let containerEl: HTMLDivElement | null = null;
     let mounted = true;

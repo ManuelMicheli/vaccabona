@@ -2,8 +2,6 @@ import {
   Calendar,
   Flame,
   ForkKnife,
-  MapPin,
-  PhoneCall,
   Sparkles,
   Users,
 } from "lucide-react";
@@ -11,7 +9,7 @@ import type { ReactNode } from "react";
 import { submitBooking } from "./actions";
 import { AnimatedSection } from "@/components/animated-section";
 import { Button } from "@/components/button";
-import { InfiniteMarquee } from "@/components/infinite-marquee";
+import { VelocityScroll } from "@/components/velocity-scroll";
 import { ProductCard } from "@/components/product-card";
 import {
   businessInfo,
@@ -54,10 +52,6 @@ export default function Home() {
                 Macelleria di qualità &amp; Ristorante di carne
               </span>
             </h1>
-            <p className="text-lg text-stone-200/85">
-              Tagli selezionati, frollatura proprietaria e brace viva. Esperienze
-              alla carne curate da {businessInfo.owner}, tra bancone e sala.
-            </p>
             <div className="flex flex-wrap items-center justify-end gap-3">
               <Button
                 href="#contatti"
@@ -89,25 +83,24 @@ export default function Home() {
         className="relative w-full overflow-hidden px-0"
         y={20}
       >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: "url('/images/Gemini_Generated_Image_4pt0dq4pt0dq4pt0.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/82 to-black/90" />
-        <div className="pointer-events-none absolute inset-x-0 -bottom-10 h-10 bg-gradient-to-t from-black/85 via-black/80 to-transparent" />
-        <div className="relative px-4 py-16 md:px-12 lg:px-16">
-          <InfiniteMarquee
-            unstyled
-            items={butcherProducts.map((p) => ({
-              title: p.name,
-              caption: `${p.price} · ${p.description}`,
-              image: p.image,
-            }))}
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-950 via-black to-stone-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(74,0,0,0.12),transparent_50%),radial-gradient(ellipse_at_80%_50%,rgba(107,17,17,0.08),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,0,0,0.05),transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black to-transparent" />
+        <div className="relative py-10 md:py-14">
+          {/* Riflesso rosso verticale */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#4A0000]/[0.03] to-transparent" />
+
+          <VelocityScroll
+            text="Tagli selezionati, frollatura proprietaria e brace viva    •    Esperienze alla carne tra bancone e sala"
+            default_velocity={2}
+            className="font-heading text-xl font-light uppercase tracking-[0.25em] text-stone-100/90 md:text-2xl lg:text-3xl"
           />
+
+          {/* Linee decorative con riflesso rosso */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#4A0000]/20 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#4A0000]/20 to-transparent" />
         </div>
       </AnimatedSection>
 
@@ -161,8 +154,8 @@ export default function Home() {
               Tagli pronti e marinati
             </h3>
             <p className="text-stone-200/80">
-              Pronto-cuoci, marinature studiate, frollatura controllata. Stripe
-              ready per il prossimo step e-commerce.
+              Pronto-cuoci, marinature studiate, frollatura controllata. Tagli
+              selezionati per la tua griglia.
             </p>
           </div>
           <Button href="#contatti" variant="primary" className="h-11 px-5">
@@ -389,72 +382,6 @@ export default function Home() {
                 <p className="rounded-lg border border-transparent px-2 py-1 text-stone-300/80">
                   {businessInfo.address}
                 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </AnimatedSection>
-
-      <AnimatedSection
-        id="orari"
-        className="mt-0 w-full px-0 pb-20"
-        y={12}
-      >
-        <div className="relative w-full overflow-hidden bg-gradient-to-r from-black via-stone-950 to-black py-12">
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.06),transparent_30%),radial-gradient(circle_at_80%_10%,rgba(255,255,255,0.04),transparent_32%)]" />
-          </div>
-          <div className="relative mx-auto flex max-w-6xl flex-col gap-8 px-6 md:flex-row md:items-center md:justify-between md:px-10 lg:px-14 xl:px-16 2xl:px-20">
-            <div className="max-w-xl space-y-3">
-              <p className="text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
-                Orari & contatti
-              </p>
-              <h3 className="font-serif text-3xl text-stone-50 sm:text-4xl">
-                Ti aspettiamo in bottega e a cena
-              </h3>
-              <p className="text-stone-200/80">
-                Servizio di macelleria dedicato e sala per la brace dal giovedì alla domenica.
-                Prenota o passa in negozio: prepariamo tagli e marinature su richiesta.
-              </p>
-            </div>
-            <div className="grid gap-3 rounded-3xl bg-white/5 p-5 text-sm text-stone-200/85 shadow-[0_14px_48px_rgba(0,0,0,0.45)]">
-              <div className="flex items-start gap-3">
-                <ForkKnife size={18} className="text-[#ff8b8b]" />
-                <div>
-                  <p className="text-stone-100">Macelleria</p>
-                  <p>{hours.macelleria}</p>
-                </div>
-              </div>
-              <div className="h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-              <div className="flex items-start gap-3">
-                <Flame size={18} className="text-[#ff8b8b]" />
-                <div>
-                  <p className="text-stone-100">Ristorante</p>
-                  <p>{hours.ristorante}</p>
-                </div>
-              </div>
-              <div className="h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-              <div className="flex items-start gap-3">
-                <PhoneCall size={18} className="text-[#ff8b8b]" />
-                <div className="space-y-1">
-                  <a
-                    className="block hover:text-[#ffb3b3]"
-                    href={`tel:${businessInfo.mobile.replace(/\s+/g, "")}`}
-                  >
-                    Prenotazioni: {businessInfo.mobile}
-                  </a>
-                  <a
-                    className="block hover:text-[#ffb3b3]"
-                    href={`tel:${businessInfo.phone}`}
-                  >
-                    Macelleria: {businessInfo.phone}
-                  </a>
-                </div>
-              </div>
-              <div className="h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-              <div className="flex items-start gap-3">
-                <MapPin size={18} className="text-[#ff8b8b]" />
-                <p className="text-stone-200/90">{businessInfo.address}</p>
               </div>
             </div>
           </div>
