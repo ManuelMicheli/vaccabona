@@ -1,14 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import { PhoneCall } from "lucide-react";
-import { Button } from "@/components/button";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { businessInfo } from "@/constants/data";
 import { cn } from "@/lib/utils";
 
 const links = [
   { href: "/#home", label: "Home" },
-  { href: "/#macelleria", label: "Macelleria" },
-  { href: "/#ristorante", label: "Ristorante" },
-  { href: "/menu", label: "Menù" },
+  { href: "/macelleria", label: "Macelleria" },
+  { href: "/menu", label: "Ristorante" },
   { href: "/le-nostre-carni", label: "Le nostre carni" },
   { href: "/#contatti", label: "Contatti" },
 ];
@@ -55,20 +56,19 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <a
               href={`tel:${businessInfo.mobile.replace(/\s+/g, "")}`}
-              className="hidden items-center gap-2 rounded-full bg-white/5 px-3 py-2 text-sm text-stone-100 transition hover:bg-white/10 hover:text-amber-50 sm:flex"
+              className="hidden items-center gap-2 rounded-full bg-white/5 px-5 h-11 text-xs uppercase tracking-[0.22em] text-stone-100 transition hover:bg-white/10 hover:text-amber-50 sm:flex"
             >
               <PhoneCall size={16} />
-              <span className="hidden text-xs uppercase tracking-[0.2em] md:inline">
-                Chiama
-              </span>
+              <span className="hidden md:inline">Chiama</span>
             </a>
-            <Button
+            <ShimmerButton
               href="#contatti"
-              variant="primary"
-              className="h-11 px-5 text-xs uppercase tracking-[0.22em]"
+              background="rgba(74, 0, 0, 1)"
+              shimmerColor="#ff8b8b"
+              className="h-11 px-5 text-xs"
             >
               Prenota Ora
-            </Button>
+            </ShimmerButton>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/button";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { cn } from "@/lib/utils";
 
 export type Product = {
@@ -60,15 +60,16 @@ export function ProductCard({ product, className }: ProductCardProps) {
         <p className="text-sm uppercase tracking-[0.16em] text-amber-100">
           Catalogo · Info su richiesta
         </p>
-        <Button
+        <ShimmerButton
           href="#contatti"
-          variant="ghost"
-          className="h-11 rounded-full border border-white/10 px-4 text-xs uppercase tracking-[0.16em] text-stone-100 hover:border-amber-300/50"
+          background="rgba(255, 255, 255, 0.05)"
+          shimmerColor="#ffffff"
+          className="h-11 rounded-full border border-white/10 px-4 text-xs"
           icon={ArrowRight}
           iconPosition="right"
         >
           Richiedi info
-        </Button>
+        </ShimmerButton>
       </div>
     </motion.article>
   );

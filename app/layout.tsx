@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Bebas_Neue, Oswald, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
+import { StickyFooter } from "@/components/ui/sticky-footer";
 import LenisScroll from "@/components/LenisScroll";
 import { businessInfo } from "@/constants/data";
 
@@ -189,7 +189,7 @@ export default function RootLayout({
         <Navbar />
         <LenisScroll>
           <main className="relative z-10 flex-1">{children}</main>
-          <Footer />
+          <StickyFooter />
         </LenisScroll>
         <div id="portal-root" />
         {jsonLd.map((schema, index) => (

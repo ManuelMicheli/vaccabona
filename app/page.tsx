@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Calendar,
   Flame,
@@ -8,12 +10,10 @@ import {
 import type { ReactNode } from "react";
 import { submitBooking } from "./actions";
 import { AnimatedSection } from "@/components/animated-section";
-import { Button } from "@/components/button";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { VelocityScroll } from "@/components/velocity-scroll";
-import { ProductCard } from "@/components/product-card";
 import {
   businessInfo,
-  butcherProducts,
   hours,
   socialHighlights,
 } from "@/constants/data";
@@ -51,24 +51,26 @@ export default function Home() {
               <span className="block text-2xl font-normal text-[#ffb3b3]/80 sm:text-3xl">
                 Macelleria di qualità &amp; Ristorante di carne
               </span>
-            </h1>
+          </h1>
             <div className="flex flex-wrap items-center justify-end gap-3">
-              <Button
+              <ShimmerButton
                 href="#contatti"
-                variant="primary"
-                className="h-12 px-6 text-xs uppercase tracking-[0.22em]"
+                background="rgba(74, 0, 0, 1)"
+                shimmerColor="#ff8b8b"
+                className="h-12 px-6 text-xs"
                 icon={Calendar}
               >
                 Prenota Tavolo
-              </Button>
-              <Button
+              </ShimmerButton>
+              <ShimmerButton
                 href="#macelleria"
-                variant="outline"
-                className="h-12 px-6 text-xs uppercase tracking-[0.22em]"
+                background="rgba(0, 0, 0, 0.4)"
+                shimmerColor="#404040"
+                className="h-12 px-6 text-xs border-white/30"
                 icon={ForkKnife}
               >
                 Vedi Shop
-              </Button>
+              </ShimmerButton>
               <div className="flex items-center gap-3 rounded-full bg-white/10 px-4 py-2 text-sm text-stone-200/80">
                 <Flame size={16} className="text-[#ff8b8b]" />
                 <span>Brace viva · Dry-aged 21gg</span>
@@ -117,13 +119,14 @@ export default function Home() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,0,0,0.2),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(0,0,0,0.3),transparent_40%)]" />
           <div className="relative z-10 flex w-full flex-col gap-6 px-6 pb-16 md:px-12 lg:px-16">
             <div className="space-y-4 max-w-2xl">
-              <Button
+              <ShimmerButton
                 href="/le-nostre-carni"
-                variant="primary"
-                className="h-12 px-6 text-xs uppercase tracking-[0.22em]"
+                background="rgba(74, 0, 0, 1)"
+                shimmerColor="#ff8b8b"
+                className="h-12 px-6 text-xs"
               >
                 Scopri le nostre carni
-              </Button>
+              </ShimmerButton>
               <p className="text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
                 Dal bancone alla sala
               </p>
@@ -140,54 +143,65 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
+      {/* Storia del mese - Japanese Wagyu */}
       <AnimatedSection
-        id="macelleria"
-        className="mt-16 w-full px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20"
-        y={22}
+        className="relative w-full overflow-hidden bg-gradient-to-b from-black via-stone-950 to-black px-4 py-20 md:px-10 lg:px-14 xl:px-16 2xl:px-20"
+        y={24}
       >
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(74,0,0,0.12),transparent_50%),radial-gradient(ellipse_at_80%_50%,rgba(107,17,17,0.08),transparent_50%)]" />
+        <div className="relative mx-auto max-w-4xl space-y-8">
+          <div className="text-center space-y-4">
             <p className="text-xs uppercase tracking-[0.24em] text-[#ffb3b3]/80">
-              Macelleria
+              Storia del mese
             </p>
-            <h3 className="font-serif text-3xl text-stone-50 sm:text-4xl">
-              Tagli pronti e marinati
-            </h3>
-            <p className="text-stone-200/80">
-              Pronto-cuoci, marinature studiate, frollatura controllata. Tagli
-              selezionati per la tua griglia.
+            <h2 className="font-serif text-4xl text-stone-50 sm:text-5xl lg:text-6xl">
+              Japanese Wagyu
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-stone-200/85">
+              L&apos;eccellenza che nasce dalla tradizione. Scopri la storia millenaria della carne più pregiata al mondo, dalle origini come animali da lavoro all&apos;era moderna del tesoro nazionale giapponese.
             </p>
           </div>
-          <Button href="#contatti" variant="primary" className="h-11 px-5">
-            Ordina e ritira
-          </Button>
-        </div>
-        <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {butcherProducts.map((product) => (
-            <ProductCard key={product.name} product={product} />
-          ))}
-        </div>
-        <div className="mt-8 rounded-3xl bg-emerald-500/10 p-6 text-emerald-50 shadow-[0_15px_50px_rgba(0,0,0,0.45)]">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="text-xs uppercase tracking-[0.24em] text-emerald-100/80">
-                Too Good To Go
-              </p>
-              <h4 className="font-serif text-2xl text-emerald-50">
-                Sacchetti sorpresa anti-spreco
-              </h4>
-              <p className="text-emerald-50/90">
-                Tagli e preparazioni del giorno in edizione limitata. Prenota
-                dall&apos;app o chiama in bottega.
-              </p>
+          
+          <div className="relative mx-auto max-w-3xl rounded-2xl bg-gradient-to-br from-stone-900/60 to-black/60 p-8 backdrop-blur-sm border border-white/5">
+            <div className="space-y-6">
+              <div>
+                <h3 className="font-serif text-2xl text-stone-50 mb-3">
+                  Un patrimonio di secoli
+                </h3>
+                <p className="text-stone-200/80 leading-relaxed">
+                  Il Wagyu giapponese affonda le sue radici nella storia millenaria del Giappone. 
+                  I bovini Wagyu discendono da ceppi autoctoni introdotti nell&apos;arcipelago intorno 
+                  al II secolo d.C., inizialmente utilizzati come animali da tiro. Per secoli, 
+                  fino all&apos;era Meiji, il consumo di carne bovina era limitato, con gli allevatori 
+                  che concentravano ogni sforzo sulla resistenza fisica e sulla cura quotidiana 
+                  di questi animali preziosi.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="font-serif text-2xl text-stone-50 mb-3">
+                  Perché è così pregiato
+                </h3>
+                <p className="text-stone-200/80 leading-relaxed">
+                  La genetica unica dei Wagyu favorisce una marezzatura intramuscolare estrema 
+                  (BMS 1-12), con alta ereditabilità per tenerezza e sapore. L&apos;alimentazione 
+                  controllata combina riso, orzo e fieno di prima qualità, spesso integrati con 
+                  birra o massaggi tradizionali. Il sistema di grading JMGA certifica ogni taglio, 
+                  e solo A4-A5 o B4-B5 possono essere certificati come Kobe, Matsusaka o Omi.
+                </p>
+              </div>
             </div>
-            <Button
-              href="https://www.toogoodtogo.com/"
-              variant="ghost"
-              className="h-11 px-5 text-emerald-50 hover:bg-emerald-400/10"
+          </div>
+
+          <div className="flex justify-center pt-4">
+            <ShimmerButton
+              href="/storia-del-mese/japanese-wagyu"
+              background="rgba(74, 0, 0, 1)"
+              shimmerColor="#ff8b8b"
+              className="h-12 px-8 text-xs"
             >
-              Scopri ora
-            </Button>
+              Leggi la storia completa
+            </ShimmerButton>
           </div>
         </div>
       </AnimatedSection>
@@ -338,13 +352,14 @@ export default function Home() {
                 as="textarea"
                 rows={3}
               />
-              <Button
+              <ShimmerButton
                 type="submit"
-                variant="primary"
-                className="w-full justify-center text-xs uppercase tracking-[0.22em]"
+                background="rgba(74, 0, 0, 1)"
+                shimmerColor="#ff8b8b"
+                className="w-full justify-center text-xs"
               >
                 Invia richiesta
-              </Button>
+              </ShimmerButton>
               <p className="text-xs text-stone-400">
                 MVP: la richiesta viene loggata lato server. Integra Stripe/CRM
                 al prossimo step.

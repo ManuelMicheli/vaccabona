@@ -19,10 +19,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/macelleria`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/le-nostre-carni`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/storia-del-mese/japanese-wagyu`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
   ];
 }
