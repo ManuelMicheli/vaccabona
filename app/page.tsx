@@ -161,10 +161,14 @@ export default function Home() {
               Ultimi reel e scatti dal bancone e dalla sala.
             </p>
           </div>
-        <div className="relative flex items-center gap-2 text-xs text-[#ffd6d6] sm:text-sm">
-            <Sparkles size={14} className="sm:w-4 sm:h-4" />
-            Placeholder dinamico Instagram
-          </div>
+        <a
+          href={businessInfo.socials.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative flex items-center text-xs text-[#ffd6d6] sm:text-sm hover:text-[#ff8b8b] transition-colors duration-300"
+        >
+          <span>@{businessInfo.socials.instagram.split("/").pop()}</span>
+        </a>
         </div>
         <div className="relative mt-6 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {socialHighlights.map((item) => (
