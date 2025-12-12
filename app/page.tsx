@@ -35,29 +35,32 @@ export default function Home() {
             loop
             muted
             playsInline
+            preload="metadata"
+            poster="/images/hero-poster.jpg"
           >
             <source
               src="/videos/Creazione_Video_Chef_Macellaio.mp4"
               type="video/mp4"
             />
+            Il tuo browser non supporta la riproduzione video.
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-stone-950/80 to-black/85" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(226,139,63,0.18),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(210,75,56,0.12),transparent_26%)]" />
         </div>
-        <div className="relative flex min-h-screen flex-col items-end justify-end gap-6 px-6 pb-20 pt-24 text-right md:px-10 lg:px-14 xl:px-16 2xl:px-20">
-          <div className="max-w-3xl space-y-5">
-            <h1 className="font-serif text-4xl leading-tight tracking-tight text-stone-50 sm:text-5xl lg:text-6xl">
+        <div className="relative flex min-h-screen flex-col items-center justify-end gap-4 px-4 pb-16 pt-20 text-center sm:items-end sm:gap-6 sm:px-6 sm:pb-20 sm:pt-24 sm:text-right md:px-10 lg:px-14 xl:px-16 2xl:px-20">
+          <div className="w-full max-w-3xl space-y-4 sm:space-y-5">
+            <h1 className="font-serif text-3xl leading-tight tracking-tight text-stone-50 sm:text-4xl md:text-5xl lg:text-6xl">
               Vacca Bòna
-              <span className="block text-2xl font-normal text-[#ffb3b3]/80 sm:text-3xl">
+              <span className="mt-2 block text-xl font-normal text-[#ffb3b3]/80 sm:text-2xl md:text-3xl">
                 Macelleria di qualità &amp; Ristorante di carne
               </span>
           </h1>
-            <div className="flex flex-wrap items-center justify-end gap-3">
+            <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
               <ShimmerButton
                 href="#contatti"
                 background="rgba(74, 0, 0, 1)"
                 shimmerColor="#ff8b8b"
-                className="h-12 px-6 text-xs"
+                className="h-12 px-6 text-sm sm:text-xs"
                 icon={Calendar}
               >
                 Prenota Tavolo
@@ -66,14 +69,14 @@ export default function Home() {
                 href="#macelleria"
                 background="rgba(0, 0, 0, 0.4)"
                 shimmerColor="#404040"
-                className="h-12 px-6 text-xs border-white/30"
+                className="h-12 px-6 text-sm sm:text-xs border-white/30"
                 icon={ForkKnife}
               >
                 Vedi Shop
               </ShimmerButton>
-              <div className="flex items-center gap-3 rounded-full bg-white/10 px-4 py-2 text-sm text-stone-200/80">
+              <div className="flex items-center justify-center gap-3 rounded-full bg-white/10 px-4 py-3 text-sm text-stone-200/80 sm:justify-start">
                 <Flame size={16} className="text-[#ff8b8b]" />
-                <span>Brace viva · Dry-aged 21gg</span>
+                <span className="text-xs sm:text-sm">Brace viva · Dry-aged 21gg</span>
               </div>
             </div>
           </div>
@@ -323,11 +326,11 @@ export default function Home() {
             </p>
 
             <form action={submitBooking} className="mt-6 space-y-4">
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-4 lg:grid-cols-2">
                 <InputField name="name" label="Nome e Cognome" required />
                 <InputField name="phone" label="Telefono" required />
               </div>
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-4 lg:grid-cols-2">
                 <InputField
                   name="date"
                   label="Data"
@@ -356,7 +359,7 @@ export default function Home() {
                 type="submit"
                 background="rgba(74, 0, 0, 1)"
                 shimmerColor="#ff8b8b"
-                className="w-full justify-center text-xs"
+                className="w-full h-12 justify-center text-sm"
               >
                 Invia richiesta
               </ShimmerButton>
@@ -449,7 +452,7 @@ function InputField({
             placeholder={placeholder}
             required={required}
             rows={rows ?? 3}
-            className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-stone-50 placeholder:text-stone-500 focus:border-[#b54c4c]/70 focus:outline-none"
+            className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-base text-stone-50 placeholder:text-stone-500 focus:border-[#b54c4c]/70 focus:outline-none focus:ring-2 focus:ring-[#ff8b8b]/30 transition-all"
             style={icon ? { paddingLeft: "2.5rem" } : undefined}
           />
         ) : (
@@ -460,7 +463,7 @@ function InputField({
             required={required}
             min={min}
             max={max}
-            className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-stone-50 placeholder:text-stone-500 focus:border-[#b54c4c]/70 focus:outline-none"
+            className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-base text-stone-50 placeholder:text-stone-500 focus:border-[#b54c4c]/70 focus:outline-none focus:ring-2 focus:ring-[#ff8b8b]/30 transition-all"
             style={icon ? { paddingLeft: "2.5rem" } : undefined}
           />
         )}

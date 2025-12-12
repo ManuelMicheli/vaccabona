@@ -64,11 +64,25 @@ function ImageWithSpotlight({ src, alt, priority, isHovered }: { src: string; al
 export default function LeNostreCarniPage() {
   const [active, setActive] = useState(0);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const bgRefs = useRef<HTMLDivElement[]>([]);
 
+  // Detect mobile viewport
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // Only use GSAP horizontal scroll on desktop
+    if (isMobile) return;
+
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       // Horizontal scroll-linked carousel
@@ -110,7 +124,7 @@ export default function LeNostreCarniPage() {
       });
     });
     return () => ctx.revert();
-  }, []);
+  }, [isMobile]);
 
   return (
     <div className="min-h-screen bg-black text-stone-100">
@@ -133,99 +147,155 @@ export default function LeNostreCarniPage() {
         </div>
       </section>
 
-      {/* Carousel pinned */}
-      <section ref={wrapperRef} className="relative overflow-hidden bg-black">
-        {/* Backgrounds */}
-        <div className="absolute inset-0">
+      {/* Carousel - Mobile: Vertical Stack | Desktop: Horizontal GSAP Scroll */}
+      {isMobile ? (
+        /* Mobile: Simple Vertical Stack */
+        <section className="relative bg-black px-4 py-12 space-y-16">
           {meats.map((item, idx) => (
-            <div
+            <article
               key={item.id}
-              ref={(el) => {
-                if (el) bgRefs.current[idx] = el;
-              }}
-              className="absolute inset-0 transition-opacity duration-600"
-              style={{
-                opacity: idx === 0 ? 1 : 0,
-              }}
+              className="relative mx-auto w-full max-w-md"
             >
-              {/* Immagine di sfondo */}
+              {/* Background for each card */}
               <div
-                className="absolute inset-0"
+                className="absolute inset-0 -z-10 opacity-10"
                 style={
                   item.image
                     ? {
                         backgroundImage: `url(${item.image})`,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
+                        filter: "blur(40px)",
                       }
                     : { backgroundColor: "transparent" }
                 }
               />
-              {/* Overlay scuro */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/85" />
-            </div>
-          ))}
-        </div>
 
-        <div className="relative z-20">
-          <div className="relative h-[70vh] md:h-[80vh]">
-            <div
-              ref={trackRef}
-              className="flex h-full items-center gap-10 px-6 md:gap-16 md:px-12 lg:px-16"
-            >
-              {meats.map((item, idx) => {
-                const isHighlighted = idx === active || hoveredCard === idx;
-                return (
-                <article
-                  key={item.id}
-                  onMouseEnter={() => setHoveredCard(idx)}
-                  onMouseLeave={() => setHoveredCard(null)}
-                  className={`group flex min-w-[80vw] max-w-[80vw] flex-col md:min-w-[50vw] md:max-w-[50vw] lg:min-w-[40vw] lg:max-w-[40vw] ${
-                    isHighlighted ? "scale-100 opacity-100" : "scale-95 opacity-70"
-                  } transition-all duration-500`}
-                  aria-current={idx === active}
+              {/* Image Container */}
+              <div className="relative mb-6 drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
+                <ImageWithSpotlight
+                  src={item.image}
+                  alt={item.alt}
+                  priority={idx === 0}
+                  isHovered={false}
+                />
+              </div>
+
+              {/* Text Content */}
+              <div className="space-y-4 text-center">
+                <div className="text-xs uppercase tracking-[0.28em] text-stone-50 font-medium">
+                  {item.title}
+                </div>
+                <h3 className="font-serif text-2xl leading-tight text-stone-50">
+                  {item.subtitle}
+                </h3>
+                <ShimmerButton
+                  href="#"
+                  background="rgba(74, 0, 0, 1)"
+                  shimmerColor="#ff8b8b"
+                  className="h-12 w-full px-5 text-sm"
                 >
-                  {/* Image Container - Shadow effect */}
-                  <div className={`relative mb-8 transition-all duration-500 ${
-                    isHighlighted
-                      ? "drop-shadow-[0_15px_40px_rgba(0,0,0,0.5),0_5px_20px_rgba(74,0,0,0.2)]"
-                      : "drop-shadow-[0_25px_60px_rgba(0,0,0,0.9),0_15px_40px_rgba(74,0,0,0.6)]"
-                  }`}>
-                    {/* Image with spotlight effect */}
-                    <ImageWithSpotlight
-                      src={item.image}
-                      alt={item.alt}
-                      priority={idx === 0}
-                      isHovered={isHighlighted}
-                    />
-                  </div>
+                  Scopri di più
+                </ShimmerButton>
+              </div>
+            </article>
+          ))}
+        </section>
+      ) : (
+        /* Desktop: Horizontal GSAP Scroll */
+        <section ref={wrapperRef} className="relative overflow-hidden bg-black">
+          {/* Backgrounds */}
+          <div className="absolute inset-0">
+            {meats.map((item, idx) => (
+              <div
+                key={item.id}
+                ref={(el) => {
+                  if (el) bgRefs.current[idx] = el;
+                }}
+                className="absolute inset-0 transition-opacity duration-600"
+                style={{
+                  opacity: idx === 0 ? 1 : 0,
+                }}
+              >
+                {/* Immagine di sfondo */}
+                <div
+                  className="absolute inset-0"
+                  style={
+                    item.image
+                      ? {
+                          backgroundImage: `url(${item.image})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }
+                      : { backgroundColor: "transparent" }
+                  }
+                />
+                {/* Overlay scuro */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/85" />
+              </div>
+            ))}
+          </div>
 
-                  {/* Text Content - Fixed height layout */}
-                  <div className="flex flex-1 flex-col space-y-4">
-                    <div className="lnc-text text-sm uppercase tracking-[0.28em] text-stone-50 font-medium">
-                      {item.title}
+          <div className="relative z-20">
+            <div className="relative h-[80vh]">
+              <div
+                ref={trackRef}
+                className="flex h-full items-center gap-16 px-12 lg:px-16"
+              >
+                {meats.map((item, idx) => {
+                  const isHighlighted = idx === active || hoveredCard === idx;
+                  return (
+                  <article
+                    key={item.id}
+                    onMouseEnter={() => setHoveredCard(idx)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                    className={`group flex min-w-[50vw] max-w-[50vw] flex-col lg:min-w-[40vw] lg:max-w-[40vw] ${
+                      isHighlighted ? "scale-100 opacity-100" : "scale-95 opacity-70"
+                    } transition-all duration-500`}
+                    aria-current={idx === active}
+                  >
+                    {/* Image Container - Shadow effect */}
+                    <div className={`relative mb-8 transition-all duration-500 ${
+                      isHighlighted
+                        ? "drop-shadow-[0_15px_40px_rgba(0,0,0,0.5),0_5px_20px_rgba(74,0,0,0.2)]"
+                        : "drop-shadow-[0_25px_60px_rgba(0,0,0,0.9),0_15px_40px_rgba(74,0,0,0.6)]"
+                    }`}>
+                      {/* Image with spotlight effect */}
+                      <ImageWithSpotlight
+                        src={item.image}
+                        alt={item.alt}
+                        priority={idx === 0}
+                        isHovered={isHighlighted}
+                      />
                     </div>
-                    <h3 className="lnc-text font-serif text-3xl leading-tight text-stone-50 md:text-4xl lg:text-5xl min-h-[160px] md:min-h-[180px] lg:min-h-[200px]">
-                      {item.subtitle}
-                    </h3>
-                    <div className="mt-auto pt-2">
-                      <ShimmerButton
-                        href="#"
-                        background="rgba(74, 0, 0, 1)"
-                        shimmerColor="#ff8b8b"
-                        className="lnc-text h-11 px-5 text-xs"
-                      >
-                        Scopri di più
-                      </ShimmerButton>
+
+                    {/* Text Content - Fixed height layout */}
+                    <div className="flex flex-1 flex-col space-y-4">
+                      <div className="lnc-text text-sm uppercase tracking-[0.28em] text-stone-50 font-medium">
+                        {item.title}
+                      </div>
+                      <h3 className="lnc-text font-serif text-3xl leading-tight text-stone-50 md:text-4xl lg:text-5xl min-h-[180px] lg:min-h-[200px]">
+                        {item.subtitle}
+                      </h3>
+                      <div className="mt-auto pt-2">
+                        <ShimmerButton
+                          href="#"
+                          background="rgba(74, 0, 0, 1)"
+                          shimmerColor="#ff8b8b"
+                          className="lnc-text h-11 px-5 text-xs"
+                        >
+                          Scopri di più
+                        </ShimmerButton>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              );
-              })}
+                  </article>
+                );
+                })}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Footer mimic */}
       <footer className="border-t border-white/5 bg-black/80 px-6 py-10 text-stone-400 md:px-12 lg:px-16">
