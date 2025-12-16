@@ -57,7 +57,7 @@ export default function Home() {
           </h1>
             <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
               <ShimmerButton
-                href="#contatti"
+                href="/scopri-il-locale#contatti"
                 background="rgba(74, 0, 0, 1)"
                 shimmerColor="#ff8b8b"
                 className="h-11 w-full px-6 text-xs sm:h-12 sm:w-auto sm:text-xs"

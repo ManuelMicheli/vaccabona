@@ -12,7 +12,7 @@ const links = [
   { href: "/macelleria", label: "Macelleria" },
   { href: "/menu", label: "Ristorante" },
   { href: "/le-nostre-carni", label: "Le nostre carni" },
-  { href: "/#contatti", label: "Contatti" },
+  { href: "/scopri-il-locale", label: "Scopri il locale" },
 ];
 
 export default function MobileMenu() {
@@ -123,7 +123,7 @@ export default function MobileMenu() {
                     <span>Chiama Ora</span>
                   </a>
                   <ShimmerButton
-                    href="#contatti"
+                    href="/scopri-il-locale#contatti"
                     background="rgba(74, 0, 0, 1)"
                     shimmerColor="#ff8b8b"
                     className="h-12 w-full text-sm"

@@ -12,7 +12,7 @@ const links = [
   { href: "/macelleria", label: "Macelleria" },
   { href: "/menu", label: "Ristorante" },
   { href: "/le-nostre-carni", label: "Le nostre carni" },
-  { href: "/#contatti", label: "Contatti" },
+  { href: "/scopri-il-locale", label: "Scopri il locale" },
 ];
 
 export default function Navbar() {
@@ -63,7 +63,7 @@ export default function Navbar() {
               <span className="hidden xl:inline">Chiama</span>
             </a>
             <ShimmerButton
-              href="#contatti"
+              href="/scopri-il-locale#contatti"
               background="rgba(74, 0, 0, 1)"
               shimmerColor="#ff8b8b"
               className="hidden md:flex h-11 px-4 lg:px-5 text-xs"

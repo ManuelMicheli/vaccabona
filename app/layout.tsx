@@ -183,6 +183,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="it" className="bg-stone-950">
+      <head>
+        {jsonLd.map((schema, index) => (
+          <script
+            key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        ))}
+      </head>
       <body
         className={`${oswald.variable} ${roboto.variable} ${bebas.variable} antialiased text-stone-100`}
       >
@@ -192,13 +201,6 @@ export default function RootLayout({
           <StickyFooter />
         </LenisScroll>
         <div id="portal-root" />
-        {jsonLd.map((schema, index) => (
-          <script
-            key={index}
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-          />
-        ))}
       </body>
     </html>
   );

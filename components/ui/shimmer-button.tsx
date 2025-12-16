@@ -108,6 +108,7 @@ const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
           className={buttonClasses}
           style={buttonStyle}
           role="button"
+          onClick={props.onClick}
         >
           {buttonContent}
         </Link>

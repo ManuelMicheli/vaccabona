@@ -186,7 +186,7 @@ export default function MenuPage() {
           </p>
           <div className="flex flex-col items-center gap-3 pt-3 sm:flex-row sm:justify-center sm:gap-4 sm:pt-4">
             <ShimmerButton
-              href="/#contatti"
+              href="/scopri-il-locale#contatti"
               background="rgba(74, 0, 0, 1)"
               shimmerColor="#ff8b8b"
               className="h-11 w-full px-6 text-xs sm:h-12 sm:w-auto sm:px-7"
@@ -285,7 +285,7 @@ export default function MenuPage() {
               </p>
             </div>
             <ShimmerButton
-              href="/#contatti"
+              href="/scopri-il-locale#contatti"
               background="rgba(74, 0, 0, 1)"
               shimmerColor="#ff8b8b"
               className="h-11 w-full px-6 text-xs sm:h-12 sm:w-auto sm:px-8"
