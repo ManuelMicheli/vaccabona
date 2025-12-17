@@ -15,10 +15,11 @@ interface ImageGalleryProps {
     images?: ImageData[];
 }
 
-// Genera array di immagini vuote con ratio alternati
+// Genera array di immagini vuote con ratio alternati (pattern deterministico)
 const generateEmptyImages = (count: number): ImageData[] => {
     return Array.from({ length: count }).map((_, index) => {
-        const isPortrait = Math.random() > 0.5;
+        // Usa un pattern deterministico invece di Math.random()
+        const isPortrait = index % 3 === 0;
         const ratio = isPortrait ? 9 / 16 : 16 / 9;
         return {
             src: '',

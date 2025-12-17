@@ -1,12 +1,12 @@
 "use client";
 
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, MouseEvent } from "react";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface ShimmerButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> {
   shimmerColor?: string;
   shimmerSize?: string;
   borderRadius?: string;
@@ -17,6 +17,7 @@ export interface ShimmerButtonProps
   href?: string;
   icon?: LucideIcon;
   iconPosition?: "left" | "right";
+  onClick?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
 }
 
 const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
